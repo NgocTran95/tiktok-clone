@@ -9,15 +9,32 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <img src={images.languageIcon} alt="language-icon" />,
+        title: 'Tiếng Việt',
+    },
+    {
+        icon: <img src={images.feedbackIcon} alt="feedback-icon" />,
+        title: 'Phản hồi và trợ giúp',
+        to: '/feedback',
+    },
+    {
+        icon: <img src={images.keyboardIcon} alt="feedback-icon" />,
+        title: 'Phím tắt trên bàn phím',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([]);
+            setSearchResult([1]);
         }, 0);
     }, []);
 
@@ -59,7 +76,11 @@ function Header() {
                         <span>Tải lên</span>
                     </Button>
                     <Button primary>Đăng nhập</Button>
-                    <FontAwesomeIcon className={cx('help-menu')} icon={faEllipsisVertical}/>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('help-menu')}>
+                            <FontAwesomeIcon className={cx('icon')} icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
