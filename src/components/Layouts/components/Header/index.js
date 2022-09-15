@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
 
@@ -8,6 +8,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ function Header() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1]);
+            setSearchResult([]);
         }, 0);
     }, []);
 
@@ -42,7 +43,7 @@ function Header() {
                     )}
                 >
                     <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" />
+                        <input placeholder="Tìm kiếm tài khoản và video" />
                         <button className={cx('clear')}>
                             <img src={images.searchClear} alt="search-clear" />
                         </button>
@@ -52,7 +53,14 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className="actions"></div>
+                <div className={cx('actions')}>
+                    <Button text>
+                        <img src={images.uploadPlus} alt="upload" />
+                        <span>Tải lên</span>
+                    </Button>
+                    <Button primary>Đăng nhập</Button>
+                    <FontAwesomeIcon className={cx('help-menu')} icon={faEllipsisVertical}/>
+                </div>
             </div>
         </header>
     );
