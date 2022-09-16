@@ -17,6 +17,21 @@ const MENU_ITEMS = [
     {
         icon: <img src={images.languageIcon} alt="language-icon" />,
         title: 'Tiếng Việt',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+            ],
+        },
     },
     {
         icon: <img src={images.feedbackIcon} alt="feedback-icon" />,
@@ -34,9 +49,18 @@ function Header() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1]);
+            setSearchResult([]);
         }, 0);
     }, []);
+
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+                // handle change language
+                break;
+            default:
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -76,7 +100,7 @@ function Header() {
                         <span>Tải lên</span>
                     </Button>
                     <Button primary>Đăng nhập</Button>
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('help-menu')}>
                             <FontAwesomeIcon className={cx('icon')} icon={faEllipsisVertical} />
                         </button>

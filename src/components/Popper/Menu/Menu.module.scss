@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
+
     .menu-item {
         margin-left: 0px;
         width: 100%;
@@ -21,9 +21,35 @@
             background: rgba(22, 24, 35, 0.03);
         }
     }
-
 }
 
 .menu-popper {
     padding-bottom: 8px;
+}
+
+// Menu header
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: -8px;
+    .header-title {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.6rem;
+        line-height: 22px;
+    }
+    .back-btn {
+        background-color: transparent;
+        cursor: pointer;
+        .back-icon {
+            height: 20px;
+            width: 20px;
+            margin-left: 28px;
+        }
+    }
 }
