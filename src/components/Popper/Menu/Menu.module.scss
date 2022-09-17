@@ -20,6 +20,15 @@
         &:hover {
             background: rgba(22, 24, 35, 0.03);
         }
+        &.separate {
+            border-top: 1px solid rgba(22, 24, 35, 0.12);
+        }
+        &.language { 
+            font-family: 'SofiaPro', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 10px 24px;
+        }
     }
 }
 
@@ -47,9 +56,12 @@
         background-color: transparent;
         cursor: pointer;
         .back-icon {
-            height: 20px;
-            width: 20px;
+            height: 16px;
+            width: 16px;
             margin-left: 28px;
         }
     }
 }
+
+
+

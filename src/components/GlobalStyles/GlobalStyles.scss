@@ -1,5 +1,4 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
     --primary-color: #fe2c55;
@@ -22,14 +21,21 @@ html {
 }
 
 body {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'ProximaNova', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     color: var(--text-color);
 }
 
-button, input, [tabindex] {
+button {
+    background-color: transparent;
+    font-family: inherit;
+}
+
+button,
+input,
+[tabindex] {
     outline: none;
     border: none;
 }
@@ -37,4 +43,78 @@ button, input, [tabindex] {
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+
+// Custom tippy tooltips
+
+body .tippy-box {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    background-color: rgba(84, 84, 84, 0.92);
+    color: rgb(255, 255, 255);
+    padding: 8px;
+
+    .tippy-content {
+        padding: 0;
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+}
+
+.tippy-box[data-placement^='bottom'] > .tippy-arrow {
+    top: -1px;
+}
+
+// Fonts embedded
+
+@font-face {
+    font-family: ProximaNova;
+    src: url(/assets/fonts/Proxima-Nova-Bold.woff2);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url(/assets/fonts/Proxima-Nova-Semibold.woff2);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url(/assets/fonts/Proxima-Nova-Regular.woff2);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url(/assets/fonts/sofiapro-bold.woff);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url(/assets/fonts/sofiapro-bold.woff2);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url(/assets/fonts/sofiapro-semibold.otf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url(/assets/fonts/sofiapro-medium.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url(/assets/fonts/sofiapro-regular.woff);
+    font-weight: 400;
 }

@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    border: 1.5px solid transparent;
+    z-index: 1;
     input {
         flex: 1;
         font-weight: 400;
@@ -39,12 +39,24 @@
         background: transparent;
         caret-color: var(--primary-color);
     }
-    &:focus-within {
-        border: 1.5px solid rgba(22, 24, 35, 0.2);
-    }
 
     input:not(:placeholder-shown) ~ .search-btn {
         color: rgba(22, 24, 35, 0.75);
+    }
+
+    .search-border {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border: 1.5px solid rgba(22, 24, 35, 0.2);
+        border-radius: 92px;
+        z-index: -1;
+    }
+    input:focus ~ .search-border {
+        display: block;
     }
 }
 
@@ -57,10 +69,7 @@
     border: none;
     display: flex;
     align-items: center;
-    img {
-        margin: 0 12px;
-        cursor: pointer;
-    }
+    cursor: pointer;
 }
 
 .spinner {
@@ -111,11 +120,31 @@
 .actions {
     display: flex;
     align-items: center;
+
+    .message {
+        margin-left: 16px;
+        padding: 3px 3px 0;
+        cursor: pointer;
+    }
+
+    .inbox {
+        margin-left: 16px;
+        cursor: pointer;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        margin-left: 24px;
+        border-radius: 50%;
+        cursor: pointer;
+        object-fit: cover;
+    }
 }
 
 .help-menu {
     margin-left: 16px;
-    padding: 0 11.5px;
+    padding: 0 4px;
     background-color: transparent;
     cursor: pointer;
     .icon {

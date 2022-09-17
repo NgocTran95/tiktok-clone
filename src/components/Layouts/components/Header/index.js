@@ -1,8 +1,10 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisVertical, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -10,42 +12,78 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { CoinIcon, FeedbackIcon, HeaderMenuIcon, InboxIcon, KeyboardIcon, LanguageIcon, LogoutIcon, MessageIcon, ProfileIcon, SearchBtnIcon, SearchClearIcon, SettingIcon, UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
+
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <img src={images.languageIcon} alt="language-icon" />,
-        title: 'Tiếng Việt',
+        icon: <LanguageIcon />,
+        title: 'English',
         children: {
             title: 'Language',
             data: [
                 {
                     type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
                     code: 'en',
                     title: 'English',
                 },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    type: 'language',
+                    code: 'it',
+                    title: 'Italiano (Italy)',
+                },
+                {
+                    type: 'language',
+                    code: 'es',
+                    title: 'Español',
+                },
+
             ],
         },
     },
     {
-        icon: <img src={images.feedbackIcon} alt="feedback-icon" />,
-        title: 'Phản hồi và trợ giúp',
+        icon: <FeedbackIcon />,
+        title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <img src={images.keyboardIcon} alt="feedback-icon" />,
-        title: 'Phím tắt trên bàn phím',
+        icon: <KeyboardIcon />,
+        title: 'Keyboard shortcuts',
+    },
+];
+
+const CURRENT_USER_ITEMS = [
+    {
+        icon: <ProfileIcon />,
+        title: 'View profile',
+    },
+    {
+        icon: <CoinIcon />,
+        title: 'Get coins',
+    },
+    {
+        icon: <SettingIcon />,
+        title: 'Settings',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <LogoutIcon />,
+        title: 'Log out',
+        separate: true,
     },
 ];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
+    let currentUser = true;
 
     useEffect(() => {
         setTimeout(() => {
@@ -68,7 +106,7 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="tiktok" />
                 </div>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -84,26 +122,50 @@ function Header() {
                     )}
                 >
                     <div className={cx('search')}>
-                        <input placeholder="Tìm kiếm tài khoản và video" />
+                        <input placeholder="Search accounts and videos" />
                         <button className={cx('clear')}>
-                            <img src={images.searchClear} alt="search-clear" />
+                            <SearchClearIcon width="16px" height="16px" />
                         </button>
                         <FontAwesomeIcon className={cx('spinner')} icon={faSpinner} />
                         <button className={cx('search-btn')}>
-                            <img src={images.searchBtn} alt="search-btn" />
+                            <SearchBtnIcon width="24px" height="24px" />
                         </button>
+                        <div className={cx('search-border')}></div>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
                 <div className={cx('actions')}>
-                    <Button text>
-                        <img src={images.uploadPlus} alt="upload" />
-                        <span>Tải lên</span>
+                    <Button text leftIcon={<UploadIcon />}>
+                        <span>Upload</span>
                     </Button>
-                    <Button primary>Đăng nhập</Button>
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('help-menu')}>
-                            <FontAwesomeIcon className={cx('icon')} icon={faEllipsisVertical} />
-                        </button>
+                    {currentUser ? (
+                        <>
+                            <Tippy content="Messages">
+                                <button className={cx('message')}>
+                                    <MessageIcon width="26px" height="26px" />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Inbox">
+                                <button className={cx('inbox')}>
+                                    <InboxIcon width="32px" height="32px" />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <Button primary>Login</Button>
+                    )}
+                    <Menu items={currentUser ? CURRENT_USER_ITEMS : MENU_ITEMS} onChange={handleMenuChange}>
+                        {currentUser ? (
+                            <Image
+                                className={cx('avatar')}
+                                src="https://p16-sign-va.tiktokcdn.coom/tos-useast2a-avt-0068-giso/f89b316574f8f0ab300e20d4b7ff6a29~c5_300x300.webp?x-expires=1663383600&x-signature=GjHDdmSoLEO2JkxUKZ7FbSG9XVM%3D"
+                                alt="user-img"
+                                fallback='https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'
+                            />
+                        ) : (
+                            <button className={cx('help-menu')}>
+                                <HeaderMenuIcon />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
