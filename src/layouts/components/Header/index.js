@@ -22,7 +22,7 @@ import {
     HeaderMenuIcon,
 } from '~/components/Icons';
 import Search from '../Search';
-import routeConfigs from '~/config/routeConfig';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -103,7 +103,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link className={cx('logo')} to={routeConfigs.home}>
+                <Link className={cx('logo')} to={config.routes.home}>
                     <img src={images.logo} alt="tiktok" />
                 </Link>
 
