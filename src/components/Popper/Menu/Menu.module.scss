@@ -1,5 +1,5 @@
 .menu-list {
-    min-width: 223px;
+    width: 223px;
     font-size: 1.6rem;
     font-weight: 600;
 }
@@ -23,17 +23,22 @@
         &.separate {
             border-top: 1px solid rgba(22, 24, 35, 0.12);
         }
-        &.language { 
-            font-family: 'SofiaPro', sans-serif;
+        &.language {
+            font-family: var(--secondary-font);
             font-size: 14px;
             font-weight: 400;
-            padding: 10px 24px;
+            padding: 8px 24px;
         }
     }
 }
 
 .menu-popper {
     padding-bottom: 8px;
+}
+
+.menu-body {
+    max-height: 590px;
+    overflow-y: auto;
 }
 
 // Menu header
@@ -62,6 +67,3 @@
         }
     }
 }
-
-
-

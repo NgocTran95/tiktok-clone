@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
@@ -7,8 +8,21 @@ import images from '~/assets/images';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
-import { SettingIcon, CoinIcon, ProfileIcon, KeyboardIcon, FeedbackIcon, LanguageIcon, LogoutIcon, UploadIcon, MessageIcon, InboxIcon, HeaderMenuIcon } from '~/components/Icons'
+import {
+    SettingIcon,
+    CoinIcon,
+    ProfileIcon,
+    KeyboardIcon,
+    FeedbackIcon,
+    LanguageIcon,
+    LogoutIcon,
+    UploadIcon,
+    MessageIcon,
+    InboxIcon,
+    HeaderMenuIcon,
+} from '~/components/Icons';
 import Search from '../Search';
+import routeConfigs from '~/config/routeConfig';
 
 const cx = classNames.bind(styles);
 
@@ -39,7 +53,6 @@ const MENU_ITEMS = [
                     code: 'es',
                     title: 'Español',
                 },
-
             ],
         },
     },
@@ -76,7 +89,6 @@ const CURRENT_USER_ITEMS = [
 ];
 
 function Header() {
-
     let currentUser = true;
 
     const handleMenuChange = (menuItem) => {
@@ -91,9 +103,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link className={cx('logo')} to={routeConfigs.home}>
                     <img src={images.logo} alt="tiktok" />
-                </div>
+                </Link>
 
                 <Search />
 
@@ -123,7 +135,7 @@ function Header() {
                                 className={cx('avatar')}
                                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/f89b316574f8f0ab300e20d4b7ff6a29~c5_300x300.webp?x-expires=1663383600&x-signature=GjHDdmSoLEO2JkxUKZ7FbSG9XVM%3D"
                                 alt="user-img"
-                                fallback='https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'
+                                fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
                             />
                         ) : (
                             <button className={cx('help-menu')}>

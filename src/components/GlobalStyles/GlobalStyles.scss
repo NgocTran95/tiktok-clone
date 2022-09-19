@@ -5,6 +5,10 @@
     --text-color: #161823;
     --white-color: #fff;
 
+    // Family Fonts
+    --primary-font: 'ProximaNova', sans-serif;
+    --secondary-font: 'SofiaPro', sans-serif;
+
     // Default Layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
@@ -21,11 +25,12 @@ html {
 }
 
 body {
-    font-family: 'ProximaNova', sans-serif;
+    font-family: var(--primary-font);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     color: var(--text-color);
+    overflow-y: overlay;
 }
 
 button {
@@ -117,4 +122,32 @@ body .tippy-box {
     font-family: SofiaPro;
     src: url(/assets/fonts/sofiapro-regular.woff);
     font-weight: 400;
+}
+
+
+//  Scroll bar 
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, .06);
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, .06);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
 }
