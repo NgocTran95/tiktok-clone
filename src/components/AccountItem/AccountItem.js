@@ -15,10 +15,10 @@ function AccountItem({ data }) {
             <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span>{data.nickname}</span>
+                    {data.nickname}
                     {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
                 </h4>
-                <span className={cx('username')}>{data.full_name}</span>
+                <p className={cx('username')}>{data.full_name}</p>
             </div>
         </Link>
     );

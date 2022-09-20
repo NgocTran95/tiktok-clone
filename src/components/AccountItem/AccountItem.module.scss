@@ -22,14 +22,13 @@
 }
 
 .name {
-    span {
-        font-size: 16px;
-        line-height: 22px;
-        font-weight: 600;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
     .check {
         font-size: 1.4rem;
         color: #20d5ec;
