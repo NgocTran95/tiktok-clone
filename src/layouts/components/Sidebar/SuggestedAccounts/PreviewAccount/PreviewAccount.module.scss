@@ -1,0 +1,72 @@
+.wrapper {
+    width: 320px;
+    padding: 20px;
+}
+
+.head {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .image {
+        width: 44px;
+        height: 44px;
+        object-fit: cover;
+    }
+
+    .follow-btn {
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 2.2rem;
+        min-width: 106px;
+        min-height: 28px;
+        color: var(--white-color);
+        background-color: var(--primary-color);
+        border-radius: 4px;
+        padding: 6px 8px;
+        cursor: pointer;
+
+        &:hover {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), rgb(254, 44, 85);
+        }
+    }
+}
+
+.name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--secondary-font);
+    line-height: 22px;
+
+    .check-icon {
+        font-size: 1.4rem;
+        margin-left: 4px;
+        color: rgb(32, 213, 236);
+    }
+}
+
+.desc {
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 2rem;
+}
+
+.stats {
+    margin-top: 8px;
+    font-size: 1.7rem;
+    line-height: 2rem;
+    .value {
+        display: inline-block;
+        font-weight: 700;
+        margin-right: 6px;
+    }
+    .type {
+        display: inline-block;
+        font-weight: 400;
+        &:not(:last-of-type) {
+            margin-right: 12px;
+        }
+    }
+}
+

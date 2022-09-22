@@ -9,13 +9,6 @@ import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
 import {
-    SettingIcon,
-    CoinIcon,
-    ProfileIcon,
-    KeyboardIcon,
-    FeedbackIcon,
-    LanguageIcon,
-    LogoutIcon,
     UploadIcon,
     MessageIcon,
     InboxIcon,
@@ -23,73 +16,11 @@ import {
 } from '~/components/Icons';
 import Search from '../Search';
 import config from '~/config';
+import { MENU_ITEMS, CURRENT_USER_ITEMS, currentUser} from '~/components/Constants'
 
 const cx = classNames.bind(styles);
 
-const MENU_ITEMS = [
-    {
-        icon: <LanguageIcon />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    type: 'language',
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt (Việt Nam)',
-                },
-                {
-                    type: 'language',
-                    code: 'it',
-                    title: 'Italiano (Italy)',
-                },
-                {
-                    type: 'language',
-                    code: 'es',
-                    title: 'Español',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FeedbackIcon />,
-        title: 'Feedback and help',
-        to: '/feedback',
-    },
-    {
-        icon: <KeyboardIcon />,
-        title: 'Keyboard shortcuts',
-    },
-];
-
-const CURRENT_USER_ITEMS = [
-    {
-        icon: <ProfileIcon />,
-        title: 'View profile',
-    },
-    {
-        icon: <CoinIcon />,
-        title: 'Get coins',
-    },
-    {
-        icon: <SettingIcon />,
-        title: 'Settings',
-    },
-    ...MENU_ITEMS,
-    {
-        icon: <LogoutIcon />,
-        title: 'Log out',
-        separate: true,
-    },
-];
-
 function Header() {
-    let currentUser = true;
 
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -123,6 +54,7 @@ function Header() {
                             <Tippy content="Inbox">
                                 <button className={cx('inbox')}>
                                     <InboxIcon width="32px" height="32px" />
+                                    <sup className={cx('notify')}>12</sup>
                                 </button>
                             </Tippy>
                         </>

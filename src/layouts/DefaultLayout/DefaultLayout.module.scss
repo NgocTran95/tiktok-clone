@@ -7,10 +7,15 @@
 .container {
     width: var(--default-layout-width);
     max-width: 100%;
-    display: flex;
     margin-top: var(--default-layout-header-height);
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
 }
 
 .content {
-    flex: 1;
+    position: relative;
+    margin-right: 24px;
+    width: 692px;
+    max-width: 692px;
 }
